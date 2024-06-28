@@ -95,9 +95,6 @@ devDependencies:
   eslint-config-next:
     specifier: 14.2.3
     version: 14.2.3(eslint@8.57.0)(typescript@5.5.2)
-  lexical:
-    specifier: ^0.16.0
-    version: 0.16.0
   postcss:
     specifier: ^8.4.38
     version: 8.4.38
@@ -5903,6 +5900,7 @@ packages:
 
   /lexical@0.16.0:
     resolution: {integrity: sha512-Skn45Qhriazq4fpAtwnAB11U//GKc4vjzx54xsV3TkDLDvWpbL4Z9TNRwRoN3g7w8AkWnqjeOSODKkrjgfRSrg==}
+    dev: false
 
   /lib0@0.2.94:
     resolution: {integrity: sha512-hZ3p54jL4Wpu7IOg26uC7dnEWiMyNlUrb9KoG7+xYs45WkQwpVvKFndVq2+pqLYKe1u8Fp3+zAfZHVvTK34PvQ==}
