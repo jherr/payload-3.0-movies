@@ -9,7 +9,7 @@
 export interface Config {
   collections: {
     users: User;
-    product: Product;
+    products: Product;
     pages: Page;
     media: Media;
     'payload-preferences': PayloadPreference;
@@ -40,7 +40,7 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "product".
+ * via the `definition` "products".
  */
 export interface Product {
   id: number;
@@ -97,9 +97,9 @@ export interface Media {
  */
 export interface Page {
   id: number;
-  title?: string | null;
+  slug?: string | null;
+  title: string;
   public?: boolean | null;
-  another?: boolean | null;
   content?: {
     root: {
       type: string;
