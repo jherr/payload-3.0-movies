@@ -1,11 +1,9 @@
 import React from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import configPromise from '@payload-config'
 import type { Media, Page as PayloadPage } from 'payload-types'
 
-import { Button } from '@/components/ui/button'
 import {
   Carousel,
   CarouselContent,
@@ -55,7 +53,7 @@ const Page = async () => {
   })
 
   const products = await payload.find({
-    collection: 'product',
+    collection: 'products',
     where: {
       name: { contains: 'Rubik' },
       price: { less_than: 30 },
@@ -64,9 +62,8 @@ const Page = async () => {
   })
 
   return (
-    <>
-      <main>
-        {/* <h1>Pages</h1>
+    <main>
+      {/* <h1>Pages</h1>
         <Button>Yo</Button>
         <ul>
           {data.docs.map((page) => (
@@ -78,39 +75,38 @@ const Page = async () => {
             </li>
           ))}
         </ul> */}
-        <pre>{JSON.stringify(products, null, 2)}</pre>
-        {products.docs.map((product) => (
-          <React.Fragment key={product.id}>
-            <h1 className="text-3xl font-bold pb-2">
-              {product.name} - {product.slug}
-            </h1>
-            <Image
-              src={product.productImage?.url ?? ''}
-              alt={product.productImage?.text ?? ''}
-              width={product.productImage?.width ?? 100}
-              height={product.productImage?.height ?? 100}
-            />
-            <Carousel>
-              <CarouselContent>
-                {product.images?.map(({ id, image }) => (
-                  <CarouselItem key={id} className="basis-1/3">
-                    <Image
-                      src={image.url ?? ''}
-                      alt={image.text ?? ''}
-                      width={image.width ?? 100}
-                      height={image.height ?? 100}
-                      className="w-full aspect-square object-cover"
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-          </React.Fragment>
-        ))}
-      </main>
-    </>
+      <pre>{JSON.stringify(products, null, 2)}</pre>
+      {products.docs.map((product) => (
+        <React.Fragment key={product.id}>
+          <h1 className="text-3xl font-bold pb-2">
+            {product.name} - {product.slug}
+          </h1>
+          <Image
+            src={product.productImage?.url ?? ''}
+            alt={product.productImage?.text ?? ''}
+            width={product.productImage?.width ?? 100}
+            height={product.productImage?.height ?? 100}
+          />
+          <Carousel>
+            <CarouselContent>
+              {product.images?.map(({ id, image }) => (
+                <CarouselItem key={id} className="basis-1/3">
+                  <Image
+                    src={image.url ?? ''}
+                    alt={image.text ?? ''}
+                    width={image.width ?? 100}
+                    height={image.height ?? 100}
+                    className="w-full aspect-square object-cover"
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </React.Fragment>
+      ))}
+    </main>
   )
 }
 

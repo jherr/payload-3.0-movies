@@ -13,19 +13,18 @@
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "ci": "payload migrate && pnpm build",
     "generate:types": "payload generate:types",
-    "generate:schema": "payload-graphql generate:schema",
-    "standalone-script": "node ./src/scripts/standalone-script.js"
+    "generate:schema": "payload-graphql generate:schema"
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0"
   },
   "dependencies": {
-    "@payloadcms/db-mongodb": "3.0.0-beta.45",
-    "@payloadcms/db-postgres": "3.0.0-beta.45",
-    "@payloadcms/next": "3.0.0-beta.45",
-    "@payloadcms/richtext-lexical": "3.0.0-beta.45",
-    "@payloadcms/richtext-slate": "3.0.0-beta.45",
-    "@payloadcms/ui": "3.0.0-beta.45",
+    "@payloadcms/db-mongodb": "3.0.0-beta.55",
+    "@payloadcms/db-postgres": "3.0.0-beta.55",
+    "@payloadcms/next": "3.0.0-beta.55",
+    "@payloadcms/richtext-lexical": "3.0.0-beta.55",
+    "@payloadcms/richtext-slate": "3.0.0-beta.55",
+    "@payloadcms/ui": "3.0.0-beta.55",
     "@radix-ui/react-slot": "^1.0.2",
     "babel-plugin-react-compiler": "^0.0.0-experimental-592953e-20240517",
     "class-variance-authority": "^0.7.0",
@@ -35,15 +34,15 @@
     "graphql": "^16.8.1",
     "lucide-react": "^0.395.0",
     "next": "15.0.0-rc.0",
-    "payload": "3.0.0-beta.45",
-    "react": "19.0.0-rc-f994737d14-20240522",
-    "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "payload": "3.0.0-beta.55",
+    "react": "^19.0.0-rc-f994737d14-20240522",
+    "react-dom": "^19.0.0-rc-f994737d14-20240522",
     "sharp": "0.32.6",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@payloadcms/graphql": "3.0.0-beta.45",
+    "@payloadcms/graphql": "3.0.0-beta.55",
     "@types/node": "^20.12.12",
     "@types/react": "npm:types-react@19.0.0-beta.2",
     "@types/react-dom": "npm:types-react-dom@19.0.0-beta.2",
