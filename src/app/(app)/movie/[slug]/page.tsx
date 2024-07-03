@@ -7,6 +7,8 @@ import configPromise from '@payload-config'
 
 const payload = await getPayloadHMR({ config: configPromise })
 
+export const dynamic = 'force-dynamic'
+
 export default async function MovieDetails({ params }: { params: { slug: string } }) {
   const { slug } = params
   const movies = await payload.find({
