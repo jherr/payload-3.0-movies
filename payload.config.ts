@@ -7,6 +7,7 @@ import {
   ParagraphFeature,
   UploadFeature,
 } from '@payloadcms/richtext-lexical'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
@@ -32,9 +33,17 @@ export default buildConfig({
   // the type of DB you would like to use
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.POSTGRES_URI || '',
+      connectionString: process.env.POSTGRES_URL,
     },
   }),
+  plugins: [
+    vercelBlobStorage({
+      collections: {
+        [MediaCollection.slug]: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN || '',
+    }),
+  ],
   // richText editor
   editor: lexicalEditor(),
   typescript: {
