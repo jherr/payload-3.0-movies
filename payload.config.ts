@@ -16,13 +16,12 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 import { UsersCollection } from '@/cms/collections/Users'
-import { ProductsCollection } from '@/cms/collections/Products'
-import { PagesCollection } from '@/cms/collections/Pages'
+import { MoviesCollection } from '@/cms/collections/Movies'
 import { MediaCollection } from '@/cms/collections/Media'
 
 export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || 'set-a-secret-in-your-env',
-  collections: [UsersCollection, ProductsCollection, PagesCollection, MediaCollection],
+  collections: [UsersCollection, MoviesCollection, MediaCollection],
   admin: {
     autoLogin: {
       email: 'dev@payloadcms.com',

@@ -1,5 +1,5 @@
 {
-  "id": "1a9276cf-8000-4f42-9926-46d28c1a20fb",
+  "id": "a23b6a48-7753-4f17-8fbe-0f166ec273aa",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -74,12 +74,16 @@
       "indexes": {
         "users_created_at_idx": {
           "name": "users_created_at_idx",
-          "columns": ["created_at"],
+          "columns": [
+            "created_at"
+          ],
           "isUnique": false
         },
         "users_email_idx": {
           "name": "users_email_idx",
-          "columns": ["email"],
+          "columns": [
+            "email"
+          ],
           "isUnique": true
         }
       },
@@ -87,8 +91,71 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "pages": {
-      "name": "pages",
+    "movies_genres": {
+      "name": "movies_genres",
+      "schema": "",
+      "columns": {
+        "_order": {
+          "name": "_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_parent_id": {
+          "name": "_parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "movies_genres_order_idx": {
+          "name": "movies_genres_order_idx",
+          "columns": [
+            "_order"
+          ],
+          "isUnique": false
+        },
+        "movies_genres_parent_id_idx": {
+          "name": "movies_genres_parent_id_idx",
+          "columns": [
+            "_parent_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "movies_genres_parent_id_fk": {
+          "name": "movies_genres_parent_id_fk",
+          "tableFrom": "movies_genres",
+          "tableTo": "movies",
+          "columnsFrom": [
+            "_parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "movies": {
+      "name": "movies",
       "schema": "",
       "columns": {
         "id": {
@@ -97,21 +164,45 @@
           "primaryKey": true,
           "notNull": true
         },
-        "title": {
-          "name": "title",
+        "name": {
+          "name": "name",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "public": {
-          "name": "public",
-          "type": "boolean",
+        "url": {
+          "name": "url",
+          "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "content": {
-          "name": "content",
-          "type": "jsonb",
+        "votes": {
+          "name": "votes",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "poster_id": {
+          "name": "poster_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "overview": {
+          "name": "overview",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tagline": {
+          "name": "tagline",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar",
           "primaryKey": false,
           "notNull": false
         },
@@ -131,13 +222,29 @@
         }
       },
       "indexes": {
-        "pages_created_at_idx": {
-          "name": "pages_created_at_idx",
-          "columns": ["created_at"],
+        "movies_created_at_idx": {
+          "name": "movies_created_at_idx",
+          "columns": [
+            "created_at"
+          ],
           "isUnique": false
         }
       },
-      "foreignKeys": {},
+      "foreignKeys": {
+        "movies_poster_id_media_id_fk": {
+          "name": "movies_poster_id_media_id_fk",
+          "tableFrom": "movies",
+          "tableTo": "media",
+          "columnsFrom": [
+            "poster_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
@@ -229,12 +336,16 @@
       "indexes": {
         "media_created_at_idx": {
           "name": "media_created_at_idx",
-          "columns": ["created_at"],
+          "columns": [
+            "created_at"
+          ],
           "isUnique": false
         },
         "media_filename_idx": {
           "name": "media_filename_idx",
-          "columns": ["filename"],
+          "columns": [
+            "filename"
+          ],
           "isUnique": true
         }
       },
@@ -282,12 +393,16 @@
       "indexes": {
         "payload_preferences_key_idx": {
           "name": "payload_preferences_key_idx",
-          "columns": ["key"],
+          "columns": [
+            "key"
+          ],
           "isUnique": false
         },
         "payload_preferences_created_at_idx": {
           "name": "payload_preferences_created_at_idx",
-          "columns": ["created_at"],
+          "columns": [
+            "created_at"
+          ],
           "isUnique": false
         }
       },
@@ -333,17 +448,23 @@
       "indexes": {
         "payload_preferences_rels_order_idx": {
           "name": "payload_preferences_rels_order_idx",
-          "columns": ["order"],
+          "columns": [
+            "order"
+          ],
           "isUnique": false
         },
         "payload_preferences_rels_parent_idx": {
           "name": "payload_preferences_rels_parent_idx",
-          "columns": ["parent_id"],
+          "columns": [
+            "parent_id"
+          ],
           "isUnique": false
         },
         "payload_preferences_rels_path_idx": {
           "name": "payload_preferences_rels_path_idx",
-          "columns": ["path"],
+          "columns": [
+            "path"
+          ],
           "isUnique": false
         }
       },
@@ -352,8 +473,12 @@
           "name": "payload_preferences_rels_parent_fk",
           "tableFrom": "payload_preferences_rels",
           "tableTo": "payload_preferences",
-          "columnsFrom": ["parent_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -361,8 +486,12 @@
           "name": "payload_preferences_rels_users_fk",
           "tableFrom": "payload_preferences_rels",
           "tableTo": "users",
-          "columnsFrom": ["users_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "users_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -410,7 +539,9 @@
       "indexes": {
         "payload_migrations_created_at_idx": {
           "name": "payload_migrations_created_at_idx",
-          "columns": ["created_at"],
+          "columns": [
+            "created_at"
+          ],
           "isUnique": false
         }
       },

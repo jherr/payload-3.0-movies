@@ -21,8 +21,8 @@ const formatSlug =
     return value
   }
 
-export const ProductsCollection: CollectionConfig = {
-  slug: 'products',
+export const MoviesCollection: CollectionConfig = {
+  slug: 'movies',
   admin: {
     useAsTitle: 'name',
   },
@@ -33,19 +33,40 @@ export const ProductsCollection: CollectionConfig = {
       required: true,
     },
     {
-      name: 'price',
+      name: 'url',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'votes',
       type: 'number',
       required: true,
     },
     {
-      name: 'productImage',
+      name: 'poster',
       type: 'upload',
-      relationTo: 'media', // required property
+      relationTo: 'media', // required
       required: true,
     },
     {
-      name: 'description',
-      type: 'richText',
+      name: 'overview',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'tagline',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'genres',
+      type: 'array',
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+        },
+      ],
       required: true,
     },
     {
@@ -58,17 +79,6 @@ export const ProductsCollection: CollectionConfig = {
       hooks: {
         beforeValidate: [formatSlug('name')],
       },
-    },
-    {
-      name: 'images',
-      type: 'array',
-      fields: [
-        {
-          name: 'image',
-          type: 'upload',
-          relationTo: 'media', // required property
-        },
-      ],
     },
   ],
 }
