@@ -7,8 +7,6 @@ import MovieCards from './MovieCards'
 
 const payload = await getPayloadHMR({ config: configPromise })
 
-export const dynamic = 'force-dynamic'
-
 const Page = async () => {
   const movies = await payload.find({
     collection: 'movies',

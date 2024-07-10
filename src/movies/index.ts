@@ -3,6 +3,7 @@ import { getPayloadHMR } from '@payloadcms/next/utilities'
 import configPromise from '@payload-config'
 
 import { posterURL } from './utils'
+import { revalidatePath } from 'next/cache'
 
 const payload = await getPayloadHMR({ config: configPromise })
 
@@ -69,6 +70,8 @@ export async function addMovieAction(movieId: number) {
     overrideAccess: true,
     showHiddenFields: false,
   })
+
+  revalidatePath('/')
 
   return movie
 }

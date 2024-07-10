@@ -36,14 +36,16 @@ export default buildConfig({
       connectionString: process.env.POSTGRES_URL,
     },
   }),
-  plugins: [
-    vercelBlobStorage({
-      collections: {
-        [MediaCollection.slug]: true,
-      },
-      token: process.env.BLOB_READ_WRITE_TOKEN || '',
-    }),
-  ],
+  plugins: process.env.BLOB_READ_WRITE_TOKEN
+    ? [
+        vercelBlobStorage({
+          collections: {
+            [MediaCollection.slug]: true,
+          },
+          token: process.env.BLOB_READ_WRITE_TOKEN || '',
+        }),
+      ]
+    : [],
   // richText editor
   editor: lexicalEditor(),
   typescript: {
