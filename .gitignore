@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+.env.production.local
+.env.production
 
 /.idea/*
 !/.idea/runConfigurations
