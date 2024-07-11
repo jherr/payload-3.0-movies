@@ -23,12 +23,5 @@ services:
   #   logging:
   #     driver: none
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 2345:5432
-      # - '71072:27017'
-
 volumes:
   data:
