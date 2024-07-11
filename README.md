@@ -16,6 +16,8 @@ cp .env.example .env.development.local
 
 Create a local Postgres instance and change the connection string in .env.development.local to match.
 
+There is a [docker-compose](./docker-compose.yml) file in the root of the project that will start a Postgres instance for you. Just run `docker-compose up -d` to start it.
+
 Create a payload secret, perhaps using `openssl rand -base64 32` and set that value in the .env.development.local file.
 
 Get a [TMBD API key](https://www.themoviedb.org/settings/api) and add it to the .env.development.local file. You will need an account on TMDB. It's all free.
