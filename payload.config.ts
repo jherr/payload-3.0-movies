@@ -3,9 +3,6 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import { en } from 'payload/i18n/en'
 import {
   lexicalEditor,
-  LinkFeature,
-  ParagraphFeature,
-  UploadFeature,
 } from '@payloadcms/richtext-lexical'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
