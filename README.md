@@ -8,33 +8,43 @@ This repo showcases showcases Payload 3.0, it's support for Postgres (as well as
 
 ### Local Development
 
-Create the local development environment file.
+1. Create the local development environment file.
 
 ```bash
 cp .env.example .env.development.local
 ```
 
-Create a local Postgres instance and change the connection string in .env.development.local to match.
+2. Run the script start database script, which uses docker to spin up Postgres.
 
-There is a [docker-compose](./docker-compose.yml) file in the root of the project that will start a Postgres instance for you. Just run `docker-compose up -d` to start it.
+```bash
+./start-database.sh
+```
 
-Create a payload secret, perhaps using `openssl rand -base64 32` and set that value in the .env.development.local file.
+_Note: You can change the connection string in the .env.development.local file to point to a different database, you will also want to change it in the start-database.sh script._
+
+3. Create a payload secret, perhaps using `openssl rand -base64 32` and set that value in the .env.development.local file.
 
 Get a [TMBD API key](https://www.themoviedb.org/settings/api) and add it to the .env.development.local file. You will need an account on TMDB. It's all free.
 
-Install the dependencies.
+4. Install the dependencies.
 
 ```bash
 pnpm i
 ```
 
-Run the migration to create the database tables.
+5. Create the database migration file.
+
+```bash
+pnpm run payload migrate:create initial
+```
+
+6. Run the migration to create the database tables.
 
 ```bash
 pnpm run payload migrate
 ```
 
-Start up the development server.
+7. Start up the development server.
 
 ```bash
 pnpm dev
