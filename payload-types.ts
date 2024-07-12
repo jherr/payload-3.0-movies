@@ -64,7 +64,7 @@ export interface Movie {
   votes: number;
   poster: number | Media;
   overview: string;
-  tagline: string;
+  tagline?: string | null;
   genres: {
     name?: string | null;
     id?: string | null;
