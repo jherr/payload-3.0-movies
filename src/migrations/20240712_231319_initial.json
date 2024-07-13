@@ -1,5 +1,5 @@
 {
-  "id": "a23b6a48-7753-4f17-8fbe-0f166ec273aa",
+  "id": "47eb685a-0a82-4942-9f46-9c636072b779",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -198,7 +198,7 @@
           "name": "tagline",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "slug": {
           "name": "slug",

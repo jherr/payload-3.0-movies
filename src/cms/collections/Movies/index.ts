@@ -60,7 +60,7 @@ export const MoviesCollection: CollectionConfig = {
     {
       name: 'tagline',
       type: 'text',
-      required: true,
+      required: false, // Some movies in tmd have no tagline
     },
     {
       name: 'genres',

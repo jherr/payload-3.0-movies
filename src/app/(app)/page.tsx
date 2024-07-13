@@ -5,9 +5,10 @@ import configPromise from '@payload-config'
 
 import MovieCards from './MovieCards'
 
-const payload = await getPayloadHMR({ config: configPromise })
 
 const Page = async () => {
+  const payload = await getPayloadHMR({ config: configPromise })
+
   const movies = await payload.find({
     collection: 'movies',
     sort: '-votes',

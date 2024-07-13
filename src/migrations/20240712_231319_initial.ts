@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS "movies" (
 	"votes" numeric NOT NULL,
 	"poster_id" integer NOT NULL,
 	"overview" varchar NOT NULL,
-	"tagline" varchar NOT NULL,
+	"tagline" varchar,
 	"slug" varchar,
 	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
 	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL

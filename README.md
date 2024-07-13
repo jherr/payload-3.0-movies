@@ -1,6 +1,6 @@
 # Payload 3.0 Movies Example
 
-This repo showcases showcases Payload 3.0, it's support for Postgres (as well as MongoDB), it's asset management system and admin dashboard, as well as simple deployment to Vercel.
+This repo showcases Payload 3.0, its support for Postgres (as well as MongoDB), its asset management system and admin dashboard, as well as simple deployment to Vercel.
 
 ### Quick Start
 

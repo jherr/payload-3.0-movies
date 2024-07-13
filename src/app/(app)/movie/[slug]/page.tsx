@@ -5,10 +5,11 @@ import type { Media } from 'payload-types'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import configPromise from '@payload-config'
 
-const payload = await getPayloadHMR({ config: configPromise })
 
 export default async function MovieDetails({ params }: { params: { slug: string } }) {
   const { slug } = params
+  const payload = await getPayloadHMR({ config: configPromise })
+
   const movies = await payload.find({
     collection: 'movies',
     where: {
@@ -33,7 +34,7 @@ export default async function MovieDetails({ params }: { params: { slug: string 
       />
       <div className="flex flex-col gap-2 w-2/3">
         <h1 className="font-bold text-4xl border-b-2">{movie.name}</h1>
-        <h2 className="font-light text-3xl mb-3">{movie.tagline}</h2>
+        {movie.tagline && <h2 className="font-light text-3xl mb-3">{movie.tagline}</h2>}
         <p className="font-light mb-3 text-right">
           {movie.genres.map(({ name }) => name).join(', ')}
         </p>
