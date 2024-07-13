@@ -5,10 +5,11 @@ import type { Media } from 'payload-types'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import configPromise from '@payload-config'
 
-const payload = await getPayloadHMR({ config: configPromise })
 
 export default async function MovieDetails({ params }: { params: { slug: string } }) {
   const { slug } = params
+  const payload = await getPayloadHMR({ config: configPromise })
+
   const movies = await payload.find({
     collection: 'movies',
     where: {

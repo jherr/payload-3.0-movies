@@ -5,9 +5,10 @@ import configPromise from '@payload-config'
 import { posterURL } from './utils'
 import { revalidatePath } from 'next/cache'
 
-const payload = await getPayloadHMR({ config: configPromise })
 
 export async function addVote(movieId: number) {
+  const payload = await getPayloadHMR({ config: configPromise })
+
   const movie = await payload.findByID({
     collection: 'movies',
     id: movieId,
@@ -29,6 +30,8 @@ export async function addVote(movieId: number) {
 }
 
 export async function addMovieAction(movieId: number) {
+  const payload = await getPayloadHMR({ config: configPromise })
+
   const movieDataReq = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&api_key=${process.env.TMDB_API_KEY}`,
   )
